@@ -34,12 +34,8 @@ class SwoogoApi
         $paramString = http_build_query($parameters);
         curl_setopt($ch, CURLOPT_URL, $url . ($method == 'get' && !empty($paramString)?'?'.$paramString:''));
         if ($method == 'post') {
-            foreach ($parameters as &$value) {
-                if (is_array($value)) {
-                    $value = http_build_query($value);
-                }
-            }
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $paramString);
         } else if ($method == 'put') {
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Length: ' . strlen($paramString)));
