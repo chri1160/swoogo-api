@@ -64,7 +64,7 @@ class SwoogoApi
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_USERPWD, $this->consumerKey.':'.$this->consumerSecret);
-        curl_setopt($ch, CURLOPT_URL, 'https://local.swoogo.com/api/v1/oauth2/token.json');
+        curl_setopt($ch, CURLOPT_URL, 'https://www.swoogo.com/api/v1/oauth2/token.json');
         curl_setopt($ch, CURLOPT_POSTFIELDS, 'grant_type=client_credentials');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
